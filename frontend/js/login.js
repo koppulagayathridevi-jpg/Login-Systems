@@ -1,8 +1,6 @@
 
 
-// ============================================
-// USER LOGIN
-// ============================================
+
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -14,18 +12,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    // ============================================
-    // LOGIN FORM SUBMIT
-    // ============================================
 
     loginForm.addEventListener("submit", async function (event) {
 
         event.preventDefault();
 
 
-        // ============================================
-        // GET FORM VALUES
-        // ============================================
 
         const emailInput = document.getElementById("email");
         const passwordInput = document.getElementById("password");
@@ -43,9 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const password = passwordInput.value;
 
 
-        // ============================================
-        // VALIDATION
-        // ============================================
+
 
         if (!email || !password) {
 
@@ -77,9 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log("================================");
 
 
-            // ============================================
-            // CALL LOGIN API
-            // ============================================
+         
 
             const response = await fetch(
                 "https://login-systems-backend-tlz3.onrender.com/api/login",
@@ -98,9 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
 
-            // ============================================
-            // READ SERVER RESPONSE
-            // ============================================
+         
 
             const data = await response.json();
 
@@ -109,9 +95,6 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log("STATUS:", response.status);
 
 
-            // ============================================
-            // LOGIN FAILED
-            // ============================================
 
             if (!response.ok) {
 
@@ -128,10 +111,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-
-            // ============================================
-            // CHECK JWT TOKEN
-            // ============================================
 
             if (!data.token) {
 
@@ -152,10 +131,7 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
 
-            // ============================================
-            // CHECK USER DATA
-            // ============================================
-
+       
             if (!data.user) {
 
                 console.error(
@@ -175,19 +151,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 data.user
             );
 
-
-            // ============================================
-            // CLEAR OLD LOGIN DATA
-            // ============================================
-
             localStorage.removeItem("token");
             localStorage.removeItem("loggedInUser");
             localStorage.removeItem("userLoggedIn");
 
 
-            // ============================================
-            // SAVE JWT TOKEN
-            // ============================================
+         
 
             localStorage.setItem(
                 "token",
@@ -195,9 +164,7 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
 
-            // ============================================
-            // SAVE LOGIN STATUS
-            // ============================================
+         
 
             localStorage.setItem(
                 "userLoggedIn",
@@ -205,9 +172,7 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
 
-            // ============================================
-            // SAVE USER INFORMATION
-            // ============================================
+           
 
             localStorage.setItem(
                 "loggedInUser",
@@ -215,9 +180,6 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
 
-            // ============================================
-            // VERIFY SAVED DATA
-            // ============================================
 
             console.log(
                 "Token saved:",
@@ -232,9 +194,6 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
 
-            // ============================================
-            // SUCCESS MESSAGE
-            // ============================================
 
             alert(
                 "Login successful! Welcome " +
@@ -245,9 +204,6 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
 
-            // ============================================
-            // REDIRECT TO USER DASHBOARD
-            // ============================================
 
             window.location.href =
                 "user-dashboard.html";
@@ -255,9 +211,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         } catch (error) {
 
-            // ============================================
-            // NETWORK / SERVER ERROR
-            // ============================================
 
             console.error(
                 "LOGIN ERROR:",

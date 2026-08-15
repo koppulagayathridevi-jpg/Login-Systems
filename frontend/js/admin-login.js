@@ -1,8 +1,4 @@
 
-// ============================================
-// ADMIN LOGIN
-// ============================================
-
 const adminLoginForm =
     document.getElementById("adminLoginForm");
 
@@ -30,9 +26,7 @@ if (adminLoginForm) {
                     .trim();
 
 
-            // ========================================
-            // VALIDATION
-            // ========================================
+     
 
             if (
                 username === "" ||
@@ -49,9 +43,7 @@ if (adminLoginForm) {
 
             try {
 
-                // ========================================
-                // LOGIN REQUEST
-                // ========================================
+          
 
                 const response =
                     await fetch(
@@ -84,10 +76,6 @@ if (adminLoginForm) {
                 );
 
 
-                // ========================================
-                // CHECK LOGIN
-                // ========================================
-
                 if (!response.ok) {
 
                     alert(
@@ -99,10 +87,6 @@ if (adminLoginForm) {
 
                 }
 
-
-                // ========================================
-                // CHECK ADMIN ROLE
-                // ========================================
 
                 if (
                     !data.user ||
@@ -118,10 +102,7 @@ if (adminLoginForm) {
                 }
 
 
-                // ========================================
-                // STORE AUTHENTICATION
-                // ========================================
-
+     
                 localStorage.setItem(
                     "token",
                     data.token
@@ -140,9 +121,7 @@ if (adminLoginForm) {
                 );
 
 
-                // ========================================
-                // SUCCESS
-                // ========================================
+
 
                 alert(
                     "Admin login successful!"

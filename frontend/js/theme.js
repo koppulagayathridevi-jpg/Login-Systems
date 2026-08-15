@@ -1,13 +1,10 @@
-// ============================================
-// THEME / DARK MODE
-// ============================================
+
 
 document.addEventListener("DOMContentLoaded", function () {
 
     const themeButtons =
         document.querySelectorAll(".theme-toggle");
 
-    // Load saved theme
     const savedTheme =
         localStorage.getItem("theme");
 
@@ -18,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
     updateThemeButtons();
 
 
-    // Theme button
+    
     themeButtons.forEach(function (button) {
 
         button.addEventListener("click", function () {

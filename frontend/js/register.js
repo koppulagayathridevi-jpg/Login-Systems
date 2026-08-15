@@ -1,9 +1,4 @@
 
-
-// ============================================
-// REGISTER FORM
-// ============================================
-
 const registerForm =
     document.getElementById("registerForm");
 
@@ -17,7 +12,7 @@ if (registerForm) {
             event.preventDefault();
 
 
-            // Get values
+           
 
             const fullName =
                 document
@@ -48,7 +43,7 @@ if (registerForm) {
                     .value;
 
 
-            // Check passwords
+            
 
             if (password !== confirmPassword) {
 
@@ -114,7 +109,7 @@ if (registerForm) {
                 );
 
 
-                // Go to login
+                
 
                 window.location.href =
                     "login.html";

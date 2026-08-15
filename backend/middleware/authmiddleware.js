@@ -4,11 +4,11 @@ const protect = (req, res, next) => {
 
     try {
 
-        // Get Authorization header
+       
         const authHeader =
             req.headers.authorization;
 
-        // Check header
+      
         if (!authHeader) {
 
             return res.status(401).json({
@@ -17,7 +17,6 @@ const protect = (req, res, next) => {
 
         }
 
-        // Check Bearer
         if (!authHeader.startsWith("Bearer ")) {
 
             return res.status(401).json({
@@ -26,21 +25,19 @@ const protect = (req, res, next) => {
 
         }
 
-        // Extract token
         const token =
             authHeader.split(" ")[1];
 
-        // Verify token
+       
         const decoded =
             jwt.verify(
                 token,
                 process.env.JWT_SECRET
             );
 
-        // Save decoded user information
+       
         req.user = decoded;
 
-        // Continue
         next();
 
     } catch (error) {

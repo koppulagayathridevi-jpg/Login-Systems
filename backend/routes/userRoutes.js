@@ -20,9 +20,6 @@ const {
 const protect = require("../middleware/authmiddleware");
 const adminOnly = require("../middleware/adminMiddleware");
 
-// ============================================
-// REGISTER
-// ============================================
 
 router.post(
     "/register",
@@ -30,7 +27,7 @@ router.post(
 );
 
 
-// ============================================
+
 // LOGIN
 // ============================================
 
@@ -40,27 +37,19 @@ router.post(
 );
 
 
-// ============================================
-// GET USERS
-// ============================================
-
 router.get(
     "/users",
     getUsers
 );
 
 
-// ============================================
-// GET USER PROFILE
-// ============================================
+
 router.get(
     "/profile/:id",
     protect,
     getUserProfile
 );
-// ============================================
-// UPDATE USER PROFILE
-// ============================================
+
 
 router.put(
     "/profile/:id",
@@ -68,9 +57,7 @@ router.put(
     updateUserProfile
 );
 
-// ============================================
-// DELETE USER ACCOUNT
-// ============================================
+
 
 router.delete(
     "/profile/:id",
@@ -78,9 +65,6 @@ router.delete(
 );
 
 
-// ============================================
-// ADMIN - GET ALL USERS
-// ============================================
 
 router.get(
     "/admin/users",
@@ -89,9 +73,7 @@ router.get(
     getAdminUsers
 );
 
-// ============================================
-// ADMIN - GET SINGLE USER
-// ============================================
+
 
 router.get(
     "/admin/users/:id",
@@ -99,9 +81,7 @@ router.get(
     adminOnly,
     getAdminUserById
 );
-// ============================================
-// ADMIN - ACTIVATE / DEACTIVATE USER
-// ============================================
+
 
 router.patch(
     "/admin/users/:id/status",

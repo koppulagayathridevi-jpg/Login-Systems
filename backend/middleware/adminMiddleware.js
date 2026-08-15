@@ -2,7 +2,7 @@ const adminOnly = (req, res, next) => {
 
     try {
 
-        // Check whether authenticated user exists
+      
         if (!req.user) {
 
             return res.status(401).json({
@@ -11,7 +11,7 @@ const adminOnly = (req, res, next) => {
 
         }
 
-        // Check admin role
+       
         if (req.user.role !== "admin") {
 
             return res.status(403).json({
@@ -20,7 +20,6 @@ const adminOnly = (req, res, next) => {
 
         }
 
-        // User is admin
         next();
 
     } catch (error) {

@@ -1,19 +1,12 @@
 
-// ============================================================
-// USER DASHBOARD
-// ============================================================
+
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    // ========================================================
-    // CONFIGURATION
-    // ========================================================
     const API_BASE_URL = "https://login-systems-backend-tlz3.onrender.com/api";
 
 
-    // ========================================================
-    // AUTHENTICATION
-    // ========================================================
+  
 
     const userLoggedIn =
         localStorage.getItem("userLoggedIn");
@@ -32,10 +25,6 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Token exists:", !!token);
     console.log("Saved user:", loggedInUser);
 
-
-    // --------------------------------------------------------
-    // Check login status
-    // --------------------------------------------------------
 
     if (
         userLoggedIn !== "true" ||
@@ -57,10 +46,6 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-
-    // ========================================================
-    // GET USER FROM LOCAL STORAGE
-    // ========================================================
 
     let user;
 
@@ -85,9 +70,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    // ========================================================
-    // GET USER ID
-    // ========================================================
 
     const userId =
         user.id ||
@@ -116,10 +98,6 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-
-    // ========================================================
-    // DOM ELEMENTS
-    // ========================================================
 
     const welcomeHeading =
         document.querySelector(
@@ -187,9 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
 
-    // ========================================================
-    // API HEADERS
-    // ========================================================
+  
 
     function getAuthHeaders() {
 
@@ -205,10 +181,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-
-    // ========================================================
-    // HANDLE UNAUTHORIZED RESPONSE
-    // ========================================================
 
     function handleUnauthorized() {
 
@@ -237,9 +209,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    // ========================================================
-    // DISPLAY WELCOME MESSAGE
-    // ========================================================
 
     function displayWelcome(profile) {
 
@@ -260,9 +229,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    // ========================================================
-    // DISPLAY PROFILE
-    // ========================================================
+
 
     function displayProfile(profile) {
 
@@ -308,10 +275,6 @@ document.addEventListener("DOMContentLoaded", function () {
         );
     }
 
-
-    // ========================================================
-    // LOAD USER PROFILE
-    // ========================================================
 
     async function loadUserProfile() {
 
@@ -360,9 +323,7 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
 
-            // ------------------------------------------------
-            // Unauthorized
-            // ------------------------------------------------
+     
 
             if (
                 response.status === 401 ||
@@ -374,10 +335,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-
-            // ------------------------------------------------
-            // Other errors
-            // ------------------------------------------------
 
             if (!response.ok) {
 
@@ -395,9 +352,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
 
-            // ------------------------------------------------
-            // Get profile
-            // ------------------------------------------------
+
 
             const profile =
                 data.user ||
@@ -413,9 +368,7 @@ document.addEventListener("DOMContentLoaded", function () {
             displayProfile(profile);
 
 
-            // ------------------------------------------------
-            // Update localStorage
-            // ------------------------------------------------
+           
 
             const updatedUser = {
 
@@ -449,7 +402,7 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
 
-            // Update local variable
+           
 
             user = updatedUser;
 
@@ -468,9 +421,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    // ========================================================
-    // EDIT PROFILE
-    // ========================================================
 
     if (editProfileBtn) {
 
@@ -478,9 +428,6 @@ document.addEventListener("DOMContentLoaded", function () {
             "click",
             function () {
 
-                // --------------------------------------------
-                // Get current profile values
-                // --------------------------------------------
 
                 const currentName =
                     profileName
@@ -494,10 +441,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         : user.username || "";
 
 
-                // --------------------------------------------
-                // Get input fields
-                // --------------------------------------------
-
+               
                 const editFullName =
                     document.getElementById(
                         "editFullName"
@@ -510,9 +454,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     );
 
 
-                // --------------------------------------------
-                // Fill form
-                // --------------------------------------------
 
                 if (editFullName) {
 
@@ -528,10 +469,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
 
-                // --------------------------------------------
-                // Show form
-                // --------------------------------------------
-
+          
                 if (editProfileForm) {
 
                     editProfileForm.style.display =
@@ -539,9 +477,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
 
-                // --------------------------------------------
-                // Hide edit button
-                // --------------------------------------------
 
                 editProfileBtn.style.display =
                     "none";
@@ -550,9 +485,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    // ========================================================
-    // CANCEL EDIT
-    // ========================================================
 
     if (cancelEditBtn) {
 
@@ -576,10 +508,6 @@ document.addEventListener("DOMContentLoaded", function () {
         );
     }
 
-
-    // ========================================================
-    // SAVE PROFILE
-    // ========================================================
 
     if (saveProfileBtn) {
 
@@ -611,10 +539,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         : "";
 
 
-                // --------------------------------------------
-                // Validation
-                // --------------------------------------------
-
+               
                 if (
                     newFullName === "" ||
                     newUsername === ""
@@ -628,9 +553,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
 
-                // --------------------------------------------
-                // Disable button
-                // --------------------------------------------
 
                 saveProfileBtn.disabled =
                     true;
@@ -690,10 +612,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     );
 
 
-                    // ----------------------------------------
-                    // Unauthorized
-                    // ----------------------------------------
-
                     if (
                         response.status === 401 ||
                         response.status === 403
@@ -704,10 +622,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         return;
                     }
 
-
-                    // ----------------------------------------
-                    // Other error
-                    // ----------------------------------------
 
                     if (!response.ok) {
 
@@ -720,27 +634,17 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
 
 
-                    // ----------------------------------------
-                    // Get updated user
-                    // ----------------------------------------
 
                     const updatedProfile =
                         data.user ||
                         data;
 
 
-                    // ----------------------------------------
-                    // Update display
-                    // ----------------------------------------
-
                     displayProfile(
                         updatedProfile
                     );
 
 
-                    // ----------------------------------------
-                    // Update localStorage
-                    // ----------------------------------------
 
                     const updatedUser = {
 
@@ -778,9 +682,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         updatedUser;
 
 
-                    // ----------------------------------------
-                    // Close edit form
-                    // ----------------------------------------
 
                     if (editProfileForm) {
 
@@ -826,9 +727,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    // ========================================================
-    // DELETE ACCOUNT
-    // ========================================================
 
     if (deleteAccountBtn) {
 
@@ -836,9 +734,6 @@ document.addEventListener("DOMContentLoaded", function () {
             "click",
             async function () {
 
-                // --------------------------------------------
-                // First confirmation
-                // --------------------------------------------
 
                 const confirmDelete =
                     confirm(
@@ -852,9 +747,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
 
-                // --------------------------------------------
-                // Second confirmation
-                // --------------------------------------------
 
                 const finalConfirmation =
                     confirm(
@@ -868,9 +760,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
 
-                // --------------------------------------------
-                // Disable button
-                // --------------------------------------------
+          
 
                 deleteAccountBtn.disabled =
                     true;
@@ -919,9 +809,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     );
 
 
-                    // ----------------------------------------
-                    // Unauthorized
-                    // ----------------------------------------
+                    
 
                     if (
                         response.status === 401 ||
@@ -934,10 +822,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
 
 
-                    // ----------------------------------------
-                    // Error
-                    // ----------------------------------------
-
                     if (!response.ok) {
 
                         alert(
@@ -948,19 +832,10 @@ document.addEventListener("DOMContentLoaded", function () {
                         return;
                     }
 
-
-                    // ----------------------------------------
-                    // Success
-                    // ----------------------------------------
-
                     alert(
                         "Your account has been deleted successfully."
                     );
 
-
-                    // ----------------------------------------
-                    // Clear login information
-                    // ----------------------------------------
 
                     localStorage.removeItem(
                         "userLoggedIn"
@@ -975,9 +850,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     );
 
 
-                    // ----------------------------------------
-                    // Redirect
-                    // ----------------------------------------
 
                     window.location.href =
                         "register.html";
@@ -1008,9 +880,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    // ========================================================
-    // LOGOUT
-    // ========================================================
 
     if (logoutBtn) {
 
@@ -1030,9 +899,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
 
-                // --------------------------------------------
-                // Clear authentication
-                // --------------------------------------------
 
                 localStorage.removeItem(
                     "userLoggedIn"
@@ -1059,9 +925,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    // ========================================================
-    // LOAD PROFILE
-    // ========================================================
 
     loadUserProfile();
 

@@ -3,9 +3,6 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 
-// ============================================
-// REGISTER USER
-// ============================================
 
 const registerUser = async (req, res) => {
 
@@ -19,7 +16,6 @@ const registerUser = async (req, res) => {
         } = req.body;
 
 
-        // Check required fields
 
         if (
             !fullName ||
@@ -34,8 +30,6 @@ const registerUser = async (req, res) => {
 
         }
 
-
-        // Check existing email
 
         const existingEmail =
             await User.findOne({
@@ -52,7 +46,7 @@ const registerUser = async (req, res) => {
         }
 
 
-        // Check existing username
+      
 
         const existingUsername =
             await User.findOne({
@@ -69,13 +63,12 @@ const registerUser = async (req, res) => {
         }
 
 
-        // Hash password
 
         const hashedPassword =
             await bcrypt.hash(password, 10);
 
 
-        // Create user
+        
 
         const user = await User.create({
 
@@ -90,7 +83,7 @@ const registerUser = async (req, res) => {
         });
 
 
-        // Send response
+    
 
         res.status(201).json({
 
@@ -130,9 +123,6 @@ const registerUser = async (req, res) => {
 };
 
 
-// ============================================
-// GET USERS
-// ============================================
 
 const getUsers = async (req, res) => {
 
@@ -165,9 +155,7 @@ const getUsers = async (req, res) => {
 
 };
 
-// ============================================
-// USER LOGIN WITH JWT
-// ============================================
+
 
 const loginUser = async (req, res) => {
 
@@ -182,7 +170,7 @@ console.log("Password received:", req.body.password);
         } = req.body;
 
 
-        // Check fields
+      
 
         if (!email || !password) {
 
@@ -193,7 +181,7 @@ console.log("Password received:", req.body.password);
         }
 
 
-        // Find user
+       
 
         const user = await User.findOne({
             email: email.toLowerCase().trim()
@@ -216,7 +204,7 @@ if (user) {
         }
 
 
-        // Compare password
+        
 
         const passwordMatch =
             await bcrypt.compare(
@@ -234,9 +222,7 @@ if (user) {
         }
 
 
-        // ========================================
-        // CREATE JWT TOKEN
-        // ========================================
+       
 
 const token = jwt.sign(
     {
@@ -251,9 +237,7 @@ const token = jwt.sign(
     }
 );
 
-// ============================================
-// SEND LOGIN RESPONSE
-// ============================================
+
 
 res.status(200).json({
 
@@ -288,9 +272,7 @@ user: {
 
 };
 
-// ============================================
-// GET USER PROFILE
-// ============================================
+
 
 const getUserProfile = async (req, res) => {
 
@@ -345,9 +327,7 @@ const getUserProfile = async (req, res) => {
 };
 
 
-// ============================================
-// UPDATE USER PROFILE
-// ============================================
+
 
 const updateUserProfile = async (req, res) => {
 
@@ -380,9 +360,6 @@ const updateUserProfile = async (req, res) => {
         } = req.body;
 
 
-        // ========================================
-        // VALIDATION
-        // ========================================
 
         if (
             !fullName ||
@@ -399,9 +376,7 @@ const updateUserProfile = async (req, res) => {
         }
 
 
-        // ========================================
-        // FIND USER
-        // ========================================
+       
 
         const user =
             await User.findById(userId);
@@ -419,9 +394,7 @@ const updateUserProfile = async (req, res) => {
         }
 
 
-        // ========================================
-        // CHECK USERNAME
-        // ========================================
+      
 
         const existingUsername =
             await User.findOne({
@@ -448,9 +421,7 @@ const updateUserProfile = async (req, res) => {
         }
 
 
-        // ========================================
-        // UPDATE USER
-        // ========================================
+     
 
         user.fullName =
             fullName.trim();
@@ -463,9 +434,7 @@ const updateUserProfile = async (req, res) => {
         await user.save();
 
 
-        // ========================================
-        // RETURN UPDATED USER
-        // ========================================
+    
 
         res.status(200).json({
 
@@ -510,9 +479,7 @@ const updateUserProfile = async (req, res) => {
 };
 
 
-// ============================================
-// DELETE USER ACCOUNT
-// ============================================
+
 
 const deleteUserAccount = async (req, res) => {
 
@@ -523,13 +490,13 @@ const deleteUserAccount = async (req, res) => {
         console.log("Delete request for user:", userId);
 
 
-        // Find and delete user
+   
 
         const deletedUser =
             await User.findByIdAndDelete(userId);
 
 
-        // User not found
+        
 
         if (!deletedUser) {
 
@@ -542,7 +509,7 @@ const deleteUserAccount = async (req, res) => {
         }
 
 
-        // Success
+       
 
         res.status(200).json({
 
@@ -571,9 +538,7 @@ const deleteUserAccount = async (req, res) => {
 
 };
 
-// ============================================
-// GET ALL USERS - ADMIN
-// ============================================
+
 
 const getAdminUsers = async (req, res) => {
 
@@ -608,9 +573,7 @@ const getAdminUsers = async (req, res) => {
 
 };
 
-// ============================================
-// GET SINGLE USER - ADMIN
-// ============================================
+
 
 const getAdminUserById = async (req, res) => {
 
@@ -653,9 +616,7 @@ const getAdminUserById = async (req, res) => {
     }
 
 };
-// ============================================
-// ACTIVATE / DEACTIVATE USER - ADMIN
-// ============================================
+
 
 const updateUserStatus = async (req, res) => {
 
@@ -664,7 +625,7 @@ const updateUserStatus = async (req, res) => {
         const userId = req.params.id;
         const { isActive } = req.body;
 
-        // Validate status
+        
         if (typeof isActive !== "boolean") {
 
             return res.status(400).json({
@@ -673,7 +634,7 @@ const updateUserStatus = async (req, res) => {
 
         }
 
-        // Find user
+       
         const user = await User.findById(userId);
 
         if (!user) {
@@ -684,12 +645,12 @@ const updateUserStatus = async (req, res) => {
 
         }
 
-        // Update status
+       
         user.isActive = isActive;
 
         await user.save();
 
-        // Response
+        
         res.status(200).json({
 
             message: isActive
@@ -723,9 +684,6 @@ const updateUserStatus = async (req, res) => {
 };
 
 
-// ============================================
-// EXPORT CONTROLLERS
-// ============================================
 
 module.exports = {
 

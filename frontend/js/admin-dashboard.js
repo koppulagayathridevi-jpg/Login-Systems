@@ -1,8 +1,4 @@
 
-// ============================================
-// CHECK ADMIN LOGIN
-// ============================================
-
 document.addEventListener("DOMContentLoaded", function () {
 
     const adminLoggedIn =
@@ -28,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
     );
 
 
-    // Load users
+   
 
     loadUsers();
 
@@ -36,9 +32,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-// ============================================
-// LOAD ALL USERS
-// ============================================
+
+
+
 
 async function loadUsers() {
 
@@ -94,7 +90,7 @@ async function loadUsers() {
         );
 
 
-        // Check API response
+        
 
         if (!response.ok) {
 
@@ -106,9 +102,6 @@ async function loadUsers() {
         }
 
 
-        // ========================================
-        // TOTAL USERS
-        // ========================================
 
         if (totalUsers) {
 
@@ -118,9 +111,6 @@ async function loadUsers() {
         }
 
 
-        // ========================================
-        // NO USERS
-        // ========================================
 
         if (
             !Array.isArray(data) ||
@@ -146,20 +136,15 @@ async function loadUsers() {
 
         }
 
-// ========================================
-// DISPLAY USERS
-// ========================================
 
 tableBody.innerHTML =
     data.map(function (user) {
 
-        // Existing users without isActive
-        // should be treated as active
+        
         const isActive =
             user.isActive !== false;
 
 
-        // Status badge
 
         const statusBadge =
             isActive
@@ -177,7 +162,7 @@ tableBody.innerHTML =
                   `;
 
 
-        // Admin cannot be deactivated
+       
 
         const statusButton =
             user.role === "admin"
@@ -296,9 +281,7 @@ tableBody.innerHTML =
 
 
 
-// ============================================
-// SEARCH USERS
-// ============================================
+
 
 const searchUser =
     document.getElementById(
@@ -354,9 +337,7 @@ if (searchUser) {
 
 
 
-// ============================================
-// ADMIN LOGOUT
-// ============================================
+
 
 function adminLogout() {
 
@@ -388,9 +369,7 @@ function adminLogout() {
 
 }
 
-// ============================================
-// USER DETAILS MODAL
-// ============================================
+
 
 const userDetailsModal =
     document.getElementById(
@@ -410,9 +389,7 @@ const closeUserModalBtn =
     );
 
 
-// ============================================
-// OPEN USER DETAILS
-// ============================================
+
 
 document.addEventListener(
     "click",
@@ -453,9 +430,6 @@ document.addEventListener(
 
 
 
-// ============================================
-// GET USER DETAILS
-// ============================================
 
 async function showUserDetails(userId) {
 
@@ -477,7 +451,7 @@ async function showUserDetails(userId) {
         }
 
 
-        // Show loading
+        
 
         document.getElementById(
             "modalFullName"
@@ -504,9 +478,7 @@ async function showUserDetails(userId) {
         ).textContent = "Loading...";
 
     
-        // ========================================
-        // FETCH USER
-        // ========================================
+     
 
         const response =
             await fetch(`https://login-systems-backend-tlz3.onrender.com/api/admin/users/${userId}`, {
@@ -542,9 +514,7 @@ async function showUserDetails(userId) {
             data.user;
 
 
-        // ========================================
-        // DISPLAY DATA
-        // ========================================
+       
 
         document.getElementById(
             "modalFullName"
@@ -570,7 +540,7 @@ async function showUserDetails(userId) {
             user._id || "N/A";
 
 
-        // Format date
+        
 
         if (user.createdAt) {
 
@@ -619,9 +589,6 @@ async function showUserDetails(userId) {
 
 
 
-// ============================================
-// CLOSE MODAL
-// ============================================
 
 function closeUserDetailsModal() {
 
@@ -656,9 +623,7 @@ if (closeUserModalBtn) {
 
 
 
-// ============================================
-// CLOSE WHEN CLICKING OUTSIDE
-// ============================================
+
 
 if (userDetailsModal) {
 
@@ -682,9 +647,6 @@ if (userDetailsModal) {
 
 
 
-// ============================================
-// CLOSE WITH ESCAPE KEY
-// ============================================
 
 document.addEventListener(
     "keydown",
@@ -703,9 +665,6 @@ document.addEventListener(
     }
 );
 
-// ============================================
-// ACTIVATE / DEACTIVATE USER
-// ============================================
 
 document.addEventListener(
     "click",
@@ -743,9 +702,7 @@ document.addEventListener(
         }
 
 
-        // ========================================
-        // CONFIRM ACTION
-        // ========================================
+   
 
         const action =
             newStatus
@@ -768,7 +725,7 @@ document.addEventListener(
 
         try {
 
-            // Disable button while processing
+           
 
             statusButton.disabled = true;
 
@@ -776,9 +733,7 @@ document.addEventListener(
                 "Updating...";
 
 
-            // ====================================
-            // UPDATE USER STATUS
-            // ====================================
+            
 
             const response =
                 await fetch(
@@ -825,16 +780,14 @@ document.addEventListener(
             }
 
 
-            // ====================================
-            // SUCCESS
-            // ====================================
+           
 
             alert(
                 data.message
             );
 
 
-            // Reload users
+            
 
             await loadUsers();
 
@@ -853,7 +806,7 @@ document.addEventListener(
             );
 
 
-            // Restore button
+           
 
             statusButton.disabled = false;
 

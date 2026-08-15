@@ -17,7 +17,7 @@ const {
     updateUserStatus
 } = require("../controllers/userController");
 
-const protect = require("../middleware/authMiddleware");
+const protect = require("../middleware/authmiddleware");
 const adminOnly = require("../middleware/adminMiddleware");
 
 // ============================================

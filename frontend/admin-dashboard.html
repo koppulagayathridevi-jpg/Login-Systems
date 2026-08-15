@@ -1,0 +1,735 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Admin Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="css/admin-dashboard.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ============================================
+         THEME BUTTON
+    ============================================= -->
+
+    <button
+        class="theme-toggle"
+        onclick="toggleTheme()"
+        aria-label="Switch theme"
+        type="button"
+    >
+        🌙
+    </button>
+
+
+
+    <!-- ============================================
+         SIDEBAR
+    ============================================= -->
+
+    <aside class="sidebar">
+
+        <!-- BRAND -->
+
+        <div class="sidebar-brand">
+
+            <div class="brand-icon">
+                🛡️
+            </div>
+
+            <div>
+
+                <h2>
+                    Admin Panel
+                </h2>
+
+                <span>
+                    Management System
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="sidebar-nav">
+
+            <a
+                href="#"
+                class="nav-item active"
+            >
+                <span>📊</span>
+                Dashboard
+            </a>
+
+
+            <a
+                href="#users"
+                class="nav-item"
+                id="usersNavBtn"
+            >
+                <span>👥</span>
+                Users
+            </a>
+
+
+            <a
+                href="#programs"
+                class="nav-item"
+            >
+                <span>📚</span>
+                Programs
+            </a>
+
+
+            <a
+                href="#events"
+                class="nav-item"
+            >
+                <span>📅</span>
+                Events
+            </a>
+
+
+            <a
+                href="#donations"
+                class="nav-item"
+            >
+                <span>💰</span>
+                Donations
+            </a>
+
+
+            <a
+                href="#volunteers"
+                class="nav-item"
+            >
+                <span>🤝</span>
+                Volunteers
+            </a>
+
+        </nav>
+
+
+
+        <!-- LOGOUT -->
+
+        <button
+            class="sidebar-logout"
+            onclick="adminLogout()"
+            type="button"
+        >
+            🚪 Logout
+        </button>
+
+    </aside>
+
+
+
+    <!-- ============================================
+         MAIN CONTENT
+    ============================================= -->
+
+    <main class="dashboard-main">
+
+
+
+        <!-- ========================================
+             HEADER
+        ========================================= -->
+
+        <header class="dashboard-header">
+
+            <div>
+
+                <p class="welcome-small">
+                    Welcome back
+                </p>
+
+                <h1>
+                    Admin Dashboard
+                </h1>
+
+            </div>
+
+
+            <!-- ADMIN PROFILE -->
+
+            <div class="admin-profile">
+
+                <div class="profile-icon">
+                    🛡️
+                </div>
+
+                <div>
+
+                    <strong>
+                        Administrator
+                    </strong>
+
+                    <span>
+                        Admin
+                    </span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ========================================
+             WELCOME CARD
+        ========================================= -->
+
+        <section class="welcome-card">
+
+            <div>
+
+                <span class="welcome-badge">
+                    🛡️ ADMIN ACCESS
+                </span>
+
+                <h2>
+                    Welcome, Administrator!
+                </h2>
+
+                <p>
+                    Manage your platform from
+                    this central dashboard.
+                </p>
+
+            </div>
+
+
+            <div class="welcome-illustration">
+                📊
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================================
+             STATISTICS
+        ========================================= -->
+
+        <section class="stats-grid">
+
+
+            <!-- USERS -->
+
+            <div class="stat-card blue">
+
+                <div class="stat-icon">
+                    👥
+                </div>
+
+                <div class="stat-content">
+
+                    <span>
+                        Total Users
+                    </span>
+
+                    <strong id="totalUsers">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PROGRAMS -->
+
+            <div class="stat-card purple">
+
+                <div class="stat-icon">
+                    📚
+                </div>
+
+                <div class="stat-content">
+
+                    <span>
+                        Programs
+                    </span>
+
+                    <strong id="totalPrograms">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- DONATIONS -->
+
+            <div class="stat-card green">
+
+                <div class="stat-icon">
+                    💰
+                </div>
+
+                <div class="stat-content">
+
+                    <span>
+                        Donations
+                    </span>
+
+                    <strong id="totalDonations">
+                        ₹0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- VOLUNTEERS -->
+
+            <div class="stat-card orange">
+
+                <div class="stat-icon">
+                    🤝
+                </div>
+
+                <div class="stat-content">
+
+                    <span>
+                        Volunteers
+                    </span>
+
+                    <strong id="totalVolunteers">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================================
+             QUICK MANAGEMENT
+        ========================================= -->
+
+        <section class="management-section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h2>
+                        Quick Management
+                    </h2>
+
+                    <p>
+                        Manage your platform resources
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="management-grid">
+
+
+
+                <!-- MANAGE USERS -->
+
+                <a
+                    href="#users"
+                    class="management-card"
+                    id="manageUsersBtn"
+                >
+
+                    <div class="management-icon">
+                        👥
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Manage Users
+                        </h3>
+
+                        <p>
+                            View and manage registered users
+                        </p>
+
+                    </div>
+
+                    <span class="card-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+
+                <!-- PROGRAMS -->
+
+                <a
+                    href="#programs"
+                    class="management-card"
+                >
+
+                    <div class="management-icon">
+                        📚
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Manage Programs
+                        </h3>
+
+                        <p>
+                            Add and manage programs
+                        </p>
+
+                    </div>
+
+                    <span class="card-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+
+                <!-- EVENTS -->
+
+                <a
+                    href="#events"
+                    class="management-card"
+                >
+
+                    <div class="management-icon">
+                        📅
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Manage Events
+                        </h3>
+
+                        <p>
+                            Create and manage events
+                        </p>
+
+                    </div>
+
+                    <span class="card-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+
+                <!-- DONATIONS -->
+
+                <a
+                    href="#donations"
+                    class="management-card"
+                >
+
+                    <div class="management-icon">
+                        💰
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Donations
+                        </h3>
+
+                        <p>
+                            View donation information
+                        </p>
+
+                    </div>
+
+                    <span class="card-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================================
+             USERS SECTION
+        ========================================= -->
+
+        <section
+            class="users-section"
+            id="users"
+        >
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h2>
+                        👥 Registered Users
+                    </h2>
+
+                    <p>
+                        View and manage all registered users.
+                    </p>
+
+                </div>
+
+
+                <!-- SEARCH -->
+
+                <div class="search-box">
+
+                    <input
+                        type="text"
+                        id="searchUser"
+                        placeholder="🔎 Search users..."
+                        autocomplete="off"
+                    >
+
+                </div>
+
+            </div>
+
+
+
+            <!-- USER TABLE -->
+
+            <div class="table-wrapper">
+
+                <table class="users-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Full Name
+                            </th>
+
+                            <th>
+                                Email
+                            </th>
+
+                            <th>
+                                Username
+                            </th>
+
+                            <th>
+                                Role
+                            </th>
+                            <th>Status</th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="usersTableBody">
+
+                        <tr>
+
+                            <td
+                                colspan="6"
+                                class="loading-users"
+                            >
+                                Loading users...
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================================
+             FOOTER
+        ========================================= -->
+
+        <footer class="dashboard-footer">
+
+            <p>
+                Admin Management System
+            </p>
+
+            <span>
+                © 2026 All Rights Reserved
+            </span>
+
+        </footer>
+
+
+    </main>
+
+
+
+    <!-- ============================================
+         JAVASCRIPT
+    ============================================= -->
+
+    <!-- ============================================
+     USER DETAILS MODAL
+============================================= -->
+
+<div
+    id="userDetailsModal"
+    class="user-modal"
+    style="display: none;"
+>
+
+    <div class="user-modal-content">
+
+        <div class="user-modal-header">
+
+            <div>
+                <span class="modal-icon">👤</span>
+
+                <h2>User Details</h2>
+            </div>
+
+            <button
+                type="button"
+                id="closeUserModal"
+                class="close-modal-btn"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <div class="user-modal-body">
+
+            <div class="user-detail-row">
+
+                <span>Full Name</span>
+
+                <strong id="modalFullName">
+                    Loading...
+                </strong>
+
+            </div>
+
+
+            <div class="user-detail-row">
+
+                <span>Email</span>
+
+                <strong id="modalEmail">
+                    Loading...
+                </strong>
+
+            </div>
+
+
+            <div class="user-detail-row">
+
+                <span>Username</span>
+
+                <strong id="modalUsername">
+                    Loading...
+                </strong>
+
+            </div>
+
+
+            <div class="user-detail-row">
+
+                <span>User ID</span>
+
+                <strong id="modalUserId">
+                    Loading...
+                </strong>
+
+            </div>
+
+
+            <div class="user-detail-row">
+
+                <span>Account Created</span>
+
+                <strong id="modalCreatedAt">
+                    Loading...
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="user-modal-footer">
+
+            <button
+                type="button"
+                id="closeUserModalBtn"
+                class="close-user-btn"
+            >
+                Close
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+    <script src="js/theme.js"></script>
+
+    <script src="js/admin-dashboard.js"></script>
+
+
+</body>
+
+</html>

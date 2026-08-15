@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Create Account</title>
+
+    <link
+        rel="stylesheet"
+        href="css/register.css"
+    >
+
+</head>
+
+
+<body>
+
+
+   <button
+    class="theme-toggle"
+    aria-label="Switch theme"
+>
+    🌙
+</button>
+
+
+    <div class="register-page">
+
+
+        <!-- LEFT -->
+
+        <div class="register-info">
+
+            <a
+                href="index.html"
+                class="back-link"
+            >
+                ← Back
+            </a>
+
+
+            <div class="info-content">
+
+                <div class="info-icon">
+                    ✨
+                </div>
+
+
+                <h1>
+                    Join Us Today!
+                </h1>
+
+
+                <p>
+                    Create your account and get started
+                    with our platform.
+                </p>
+
+
+                <div class="features">
+
+                    <div class="feature">
+
+                        <span>🔒</span>
+
+                        <div>
+                            <strong>
+                                Secure Account
+                            </strong>
+
+                            <small>
+                                Your information is protected
+                            </small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature">
+
+                        <span>⚡</span>
+
+                        <div>
+                            <strong>
+                                Quick Registration
+                            </strong>
+
+                            <small>
+                                Create your account in seconds
+                            </small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature">
+
+                        <span>✓</span>
+
+                        <div>
+                            <strong>
+                                Easy Access
+                            </strong>
+
+                            <small>
+                                Access your account anytime
+                            </small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT -->
+
+        <div class="register-section">
+
+            <div class="register-card">
+
+
+                <div class="register-icon">
+                    👤
+                </div>
+
+
+                <h2>
+                    Create Account
+                </h2>
+
+
+                <p class="register-subtitle">
+                    Please fill in the details to register
+                </p>
+
+
+                <form id="registerForm">
+
+
+                    <div class="form-group">
+
+                        <label for="fullname">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="fullname"
+                            placeholder="Enter your full name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="Enter your email"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="username">
+                            Username
+                        </label>
+
+                        <input
+                            type="text"
+                            id="username"
+                            placeholder="Choose a username"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+
+                        <div class="password-wrapper">
+
+                            <input
+                                type="password"
+                                id="password"
+                                placeholder="Create a password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                onclick="togglePassword('password', this)"
+                            >
+                                👁
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="confirmPassword">
+                            Confirm Password
+                        </label>
+
+
+                        <div class="password-wrapper">
+
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                placeholder="Confirm your password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                onclick="togglePassword('confirmPassword', this)"
+                            >
+                                👁
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="terms">
+
+                        <input
+                            type="checkbox"
+                            required
+                        >
+
+                        <span>
+
+                            I agree to the
+
+                            <a href="#">
+                                Terms & Conditions
+                            </a>
+
+                        </span>
+
+                    </label>
+
+
+                    <button
+                        type="submit"
+                        class="register-btn"
+                    >
+                        Create Account
+                    </button>
+
+                </form>
+
+
+                <p class="login-text">
+
+                    Already have an account?
+
+                    <a href="login.html">
+                        Login Here
+                    </a>
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function togglePassword(inputId, button) {
+
+            const input =
+                document.getElementById(inputId);
+
+
+            if (input.type === "password") {
+
+                input.type = "text";
+
+                button.textContent = "🙈";
+
+            } else {
+
+                input.type = "password";
+
+                button.textContent = "👁";
+
+            }
+
+        }
+
+    </script>
+
+
+    <script src="js/theme.js"></script>
+    <script src="js/register.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Welcome</title>
+
+    <link
+        rel="stylesheet"
+        href="css/index.css"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- =====================================
+         THEME BUTTON
+    ====================================== -->
+
+    <button
+        class="theme-toggle"
+        onclick="toggleTheme()"
+        aria-label="Switch to dark mode"
+        title="Dark Mode"
+    >
+        🌙
+    </button>
+
+
+    <!-- =====================================
+         MAIN CONTAINER
+    ====================================== -->
+
+    <main class="home-container">
+
+
+        <!-- LOGO -->
+
+        <div class="brand-icon">
+            🔐
+        </div>
+
+
+        <h1>
+            Welcome
+        </h1>
+
+
+        <p class="subtitle">
+            Please select login type
+        </p>
+
+
+        <!-- LOGIN OPTIONS -->
+
+        <div class="login-options">
+
+
+            <!-- USER -->
+
+            <a
+                href="login.html"
+                class="login-option user-option"
+            >
+
+                <div class="option-icon">
+                    👤
+                </div>
+
+                <div class="option-content">
+
+                    <h2>
+                        User Login
+                    </h2>
+
+                    <p>
+                        Login as user
+                    </p>
+
+                </div>
+
+                <span class="arrow">
+                    →
+                </span>
+
+            </a>
+
+
+            <!-- ADMIN -->
+
+            <a
+                href="admin-login.html"
+                class="login-option admin-option"
+            >
+
+                <div class="option-icon">
+                    🛡️
+                </div>
+
+                <div class="option-content">
+
+                    <h2>
+                        Admin Login
+                    </h2>
+
+                    <p>
+                        Login as administrator
+                    </p>
+
+                </div>
+
+                <span class="arrow">
+                    →
+                </span>
+
+            </a>
+
+
+        </div>
+
+
+        <p class="footer-text">
+            Secure • Simple • Reliable
+        </p>
+
+    </main>
+
+
+    <script src="js/theme.js"></script>
+
+</body>
+
+</html>

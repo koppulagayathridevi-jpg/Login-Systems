@@ -1,0 +1,683 @@
+/* =========================================
+   INDEX PAGE
+   LIGHT + DARK MODE
+========================================= */
+
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   LIGHT MODE VARIABLES
+========================================= */
+
+:root {
+
+    --bg-color: #f5f8fc;
+
+    --card-color: #ffffff;
+
+    --text-color: #172033;
+
+    --muted-color: #667085;
+
+    --border-color: #e0e7f0;
+
+    --blue: #2563eb;
+
+    --blue-dark: #1d4ed8;
+
+    --purple: #7c3aed;
+
+    --shadow:
+        0 20px 50px rgba(15, 42, 70, 0.10);
+
+}
+
+
+/* =========================================
+   HTML + BODY
+========================================= */
+
+html,
+body {
+
+    min-height: 100%;
+
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(37, 99, 235, 0.10),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(124, 58, 237, 0.08),
+            transparent 30%
+        ),
+        var(--bg-color);
+
+    color: var(--text-color);
+
+    transition:
+        background 0.35s ease,
+        color 0.35s ease;
+
+}
+
+
+/* =========================================
+   DARK MODE
+========================================= */
+
+body.dark-mode {
+
+    --bg-color: #0b1120;
+
+    --card-color: #111827;
+
+    --text-color: #f1f5f9;
+
+    --muted-color: #94a3b8;
+
+    --border-color: #263247;
+
+    --blue: #3b82f6;
+
+    --blue-dark: #2563eb;
+
+    --purple: #a78bfa;
+
+    --shadow:
+        0 20px 50px rgba(0, 0, 0, 0.35);
+
+    background:
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(37, 99, 235, 0.15),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(124, 58, 237, 0.12),
+            transparent 30%
+        ),
+        #0b1120;
+
+    color: var(--text-color);
+
+}
+
+
+/* =========================================
+   THEME BUTTON
+========================================= */
+
+.theme-toggle {
+
+    position: fixed;
+
+    top: 25px;
+
+    right: 30px;
+
+    width: 46px;
+
+    height: 46px;
+
+    border:
+        1px solid var(--border-color);
+
+    border-radius: 50%;
+
+    background:
+        var(--card-color);
+
+    color:
+        var(--text-color);
+
+    font-size: 19px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 6px 20px rgba(0, 0, 0, 0.08);
+
+    z-index: 100;
+
+    transition:
+        all 0.3s ease;
+
+}
+
+
+.theme-toggle:hover {
+
+    transform:
+        rotate(15deg)
+        scale(1.08);
+
+    border-color:
+        var(--blue);
+
+}
+
+
+/* =========================================
+   MAIN
+========================================= */
+
+.home-container {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 40px 20px;
+
+}
+
+
+/* =========================================
+   BRAND
+========================================= */
+
+.brand-icon {
+
+    width: 78px;
+
+    height: 78px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 23px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #1d4ed8
+        );
+
+    font-size: 34px;
+
+    box-shadow:
+        0 14px 30px
+        rgba(37, 99, 235, 0.25);
+
+    margin-bottom: 20px;
+
+    animation:
+        float 3s ease-in-out infinite;
+
+}
+
+
+/* =========================================
+   FLOAT ANIMATION
+========================================= */
+
+@keyframes float {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-6px);
+
+    }
+
+}
+
+
+/* =========================================
+   HEADING
+========================================= */
+
+.home-container h1 {
+
+    font-size: 36px;
+
+    margin-bottom: 8px;
+
+    color:
+        var(--text-color);
+
+}
+
+
+/* =========================================
+   SUBTITLE
+========================================= */
+
+.subtitle {
+
+    color:
+        var(--muted-color);
+
+    font-size: 15px;
+
+    margin-bottom: 35px;
+
+}
+
+
+/* =========================================
+   LOGIN OPTIONS
+========================================= */
+
+.login-options {
+
+    width: 100%;
+
+    max-width: 500px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+
+}
+
+
+/* =========================================
+   LOGIN CARD
+========================================= */
+
+.login-option {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 22px;
+
+    text-decoration: none;
+
+    color:
+        var(--text-color);
+
+    background:
+        var(--card-color);
+
+    border:
+        1px solid var(--border-color);
+
+    border-radius: 16px;
+
+    box-shadow:
+        var(--shadow);
+
+    transition:
+        all 0.3s ease;
+
+    overflow: hidden;
+
+}
+
+
+/* =========================================
+   LEFT COLOR LINE
+========================================= */
+
+.login-option::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    top: 0;
+
+    width: 4px;
+
+    height: 100%;
+
+    background:
+        var(--blue);
+
+}
+
+
+/* =========================================
+   ADMIN COLOR LINE
+========================================= */
+
+.admin-option::before {
+
+    background:
+        var(--purple);
+
+}
+
+
+/* =========================================
+   LOGIN CARD HOVER
+========================================= */
+
+.login-option:hover {
+
+    transform:
+        translateY(-5px);
+
+    border-color:
+        var(--blue);
+
+    box-shadow:
+        0 20px 40px
+        rgba(37, 99, 235, 0.15);
+
+}
+
+
+/* =========================================
+   ADMIN HOVER
+========================================= */
+
+.admin-option:hover {
+
+    border-color:
+        var(--purple);
+
+}
+
+
+/* =========================================
+   OPTION ICON
+========================================= */
+
+.option-icon {
+
+    width: 58px;
+
+    height: 58px;
+
+    min-width: 58px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 15px;
+
+    background:
+        #e8f0ff;
+
+    font-size: 25px;
+
+    transition:
+        0.3s ease;
+
+}
+
+
+/* =========================================
+   DARK MODE USER ICON
+========================================= */
+
+body.dark-mode .login-option .option-icon {
+
+    background:
+        #172554;
+
+}
+
+
+/* =========================================
+   ADMIN ICON
+========================================= */
+
+.admin-option .option-icon {
+
+    background:
+        #eee7ff;
+
+}
+
+
+/* =========================================
+   DARK MODE ADMIN ICON
+========================================= */
+
+body.dark-mode .admin-option .option-icon {
+
+    background:
+        #2e1065;
+
+}
+
+
+/* =========================================
+   ICON HOVER
+========================================= */
+
+.login-option:hover .option-icon {
+
+    transform:
+        scale(1.08);
+
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.option-content {
+
+    flex: 1;
+
+}
+
+
+/* =========================================
+   OPTION TITLE
+========================================= */
+
+.option-content h2 {
+
+    font-size: 17px;
+
+    margin-bottom: 5px;
+
+    color:
+        var(--text-color);
+
+}
+
+
+/* =========================================
+   OPTION DESCRIPTION
+========================================= */
+
+.option-content p {
+
+    color:
+        var(--muted-color);
+
+    font-size: 12px;
+
+}
+
+
+/* =========================================
+   ARROW
+========================================= */
+
+.arrow {
+
+    font-size: 22px;
+
+    color:
+        var(--muted-color);
+
+    transition:
+        0.3s ease;
+
+}
+
+
+/* =========================================
+   ARROW HOVER
+========================================= */
+
+.login-option:hover .arrow {
+
+    color:
+        var(--blue);
+
+    transform:
+        translateX(5px);
+
+}
+
+
+/* =========================================
+   ADMIN ARROW
+========================================= */
+
+.admin-option:hover .arrow {
+
+    color:
+        var(--purple);
+
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer-text {
+
+    margin-top: 28px;
+
+    color:
+        var(--muted-color);
+
+    font-size: 11px;
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .theme-toggle {
+
+        top: 18px;
+
+        right: 18px;
+
+        width: 42px;
+
+        height: 42px;
+
+    }
+
+
+    .home-container {
+
+        padding:
+            70px 18px 30px;
+
+    }
+
+
+    .brand-icon {
+
+        width: 65px;
+
+        height: 65px;
+
+        font-size: 28px;
+
+    }
+
+
+    .home-container h1 {
+
+        font-size: 29px;
+
+    }
+
+
+    .subtitle {
+
+        font-size: 13px;
+
+        margin-bottom: 28px;
+
+    }
+
+
+    .login-option {
+
+        padding: 18px;
+
+        gap: 13px;
+
+    }
+
+
+    .option-icon {
+
+        width: 48px;
+
+        height: 48px;
+
+        min-width: 48px;
+
+        font-size: 21px;
+
+    }
+
+}

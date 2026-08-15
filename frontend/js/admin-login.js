@@ -1,86 +1,3 @@
-// // ============================================
-// // ADMIN LOGIN
-// // ============================================
-
-// const adminLoginForm =
-//     document.getElementById("adminLoginForm");
-
-
-// if (adminLoginForm) {
-
-//     adminLoginForm.addEventListener(
-//         "submit",
-//         function (event) {
-
-//             event.preventDefault();
-
-
-//             const username =
-//                 document
-//                     .getElementById("adminUsername")
-//                     .value
-//                     .trim();
-
-
-//             const password =
-//                 document
-//                     .getElementById("adminPassword")
-//                     .value
-//                     .trim();
-
-
-//             // Temporary admin credentials
-
-//             const adminUsername = "Gayathri";
-
-//             const adminPassword = "gayathri123";
-
-
-//             if (
-//                 username === "" ||
-//                 password === ""
-//             ) {
-
-//                 alert(
-//                     "Please enter username and password."
-//                 );
-
-//                 return;
-//             }
-
-
-//             if (
-//                 username === adminUsername &&
-//                 password === adminPassword
-//             ) {
-
-//                 localStorage.setItem(
-//                     "adminLoggedIn",
-//                     "true"
-//                 );
-
-
-//                 alert(
-//                     "Admin login successful!"
-//                 );
-
-
-//                 window.location.href =
-//                     "admin-dashboard.html";
-
-
-//             } else {
-
-//                 alert(
-//                     "Invalid admin username or password."
-//                 );
-
-//             }
-
-//         }
-//     );
-
-// }
 
 // ============================================
 // ADMIN LOGIN
@@ -138,7 +55,7 @@ if (adminLoginForm) {
 
                 const response =
                     await fetch(
-                        "http://localhost:5000/api/login",
+                        "https://login-systems-backend-tlz3.onrender.com/api/login",
                         {
                             method: "POST",
 

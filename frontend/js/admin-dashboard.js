@@ -74,7 +74,7 @@ async function loadUsers() {
 
         const response =
             await fetch(
-                "http://localhost:5000/api/users"
+                "https://login-systems-backend-tlz3.onrender.com/api/users"
             );
 
 
@@ -509,17 +509,14 @@ async function showUserDetails(userId) {
         // ========================================
 
         const response =
-            await fetch(`http://localhost:5000/api/admin/users/${userId}`, {
+            await fetch(`https://login-systems-backend-tlz3.onrender.com/api/admin/users/${userId}`, {
     method: "GET",
     headers: {
         "Authorization": `Bearer ${localStorage.getItem("token")}`,
         "Content-Type": "application/json"
     }
 })
-            //  fetch(
-            //     `http://localhost:5000/api/profile/${userId}`
-            // );
-
+          
 
         const data =
             await response.json();
@@ -785,7 +782,7 @@ document.addEventListener(
 
             const response =
                 await fetch(
-                    `http://localhost:5000/api/admin/users/${userId}/status`,
+                    `https://login-systems-backend-tlz3.onrender.com/api/admin/users/${userId}/status`,
                     {
                         method: "PATCH",
 
